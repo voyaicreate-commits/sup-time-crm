@@ -1,0 +1,7 @@
+[build]
+builder = "NIXPACKS"
+rootDirectory = "./server"
+
+[deploy]
+startCommand = "npm start"
+buildCommand = "npm install && npm run build"
