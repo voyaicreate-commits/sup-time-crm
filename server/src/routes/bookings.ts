@@ -149,7 +149,8 @@ router.post('/', (req: Request, res: Response) => {
   }
 
   // Рассчитываем залог
-  const depositPercent = parseFloat(db.prepare("SELECT value FROM settings WHERE key = 'deposit_percent'").get() as any)?.value || '30';
+  const depositSetting = db.prepare("SELECT value FROM settings WHERE key = 'deposit_percent'").get() as { value: string } | undefined;
+  const depositPercent = parseFloat(depositSetting?.value || '30');
   const depositAmount = totalPrice * (parseFloat(depositPercent) / 100);
 
   const bookingId = uuidv4();

@@ -125,7 +125,7 @@ router.put('/:id', (req: Request, res: Response) => {
     data.length_cm, data.width_cm, data.volume_liters,
     data.max_weight_kg, data.purchase_price, data.sale_price,
     data.rental_price_daily, data.rental_price_hourly,
-    data.status || existing.status, data.image_url, data.notes,
+    (data as any).status || existing.status, data.image_url, data.notes,
     req.params.id
   );
 
